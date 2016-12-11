@@ -66,14 +66,14 @@ var Core = {
 		};
 		return this.returnSizes(w, h, r);
 	},
-	menuItem_hovered: function(event) {
+	menuItem_hovered: function(e) {
 		$(this).toggleClass('hover').toggleClass('def');
 	},
-	menuButtonClicked: function(event) {
-		if( event && event.stopPropagation) event.stopPropagation();
+	menuButtonClicked: function(e) {
+		if( e && e.stopPropagation) e.stopPropagation();
 		$('#site-title, #site-menu').toggleClass(this.clsMobileMenuOpened);
 	},
-	switchTo: function(event, elt, id, url) {
+	switchTo: function(e, elt, id, url) {
 		var cb_attr, cb, section = $('#'+id+'-box'), selectedClassName = this.clsMenuItemSelected;
 		this.updateHistory(url, elt.title);
 		$('#content-wrapper #content .page-content').hide();
@@ -84,7 +84,7 @@ var Core = {
 		$('#site-menu li.'+selectedClassName).removeClass(selectedClassName);
 		$(elt).addClass(selectedClassName);
 		if( $('#site-menu').hasClass(this.clsMobileMenuOpened) )
-			this.menuButtonClicked(event);
+			this.menuButtonClicked(e);
 		$('#content-wrapper #content, #content-wrapper #content .page-content').scrollTop(0);
 	},
 	updateHistory: function (url, title) {
@@ -103,8 +103,8 @@ var Core = {
 	/**
 		Adding another fake function here to see how GIT will handle this.
 	*/
-	folderSelectorClicked: function(event) {
-		if( event && event.stopPropagation) event.stopPropagation();
+	folderSelectorClicked: function(e) {
+		if( e && e.stopPropagation) e.stopPropagation();
 		$('#work-menu').toggleClass('opened');
 	},
 	showFolder: function(element, name) {
@@ -203,9 +203,9 @@ var Core = {
 		var sec_code = document.getElementById('field_sec_code');
 		sec_code.src = sec_code.src.replace(/\d+$/, new Date().getTime());
 	},
-	contactFormSubmitted: function(event) {
-		var form = event.target;
-		event.preventDefault();
+	contactFormSubmitted: function(e) {
+		var form = e.target;
+		e.preventDefault();
 		$.ajax({
 			type: form.method,
 			url: form.action,
@@ -218,9 +218,9 @@ var Core = {
 			Core.newSecurityCode();
 		}.bind(this));
 	},
-	keyPressed: function(event) {
+	keyPressed: function(e) {
 		if( $(document.body).hasClass(Core.clsCarousel) ) {
-			switch(event.which) {
+			switch(e.which) {
 				case 27: return this.closeCarousel();
 				case 37: return this.showPreviousImage();
 				case 39: return this.showNextImage();
@@ -278,12 +278,12 @@ var Core = {
 };
 
 /* Adding a comment here */
-$(document).ready( function(e) {
+$(document).ready( function(event) {
 	if( (this.img_land = $('#landscape_bkgd')[0]) && (this.img_port = $('#portrait_bkgd')[0]) ) {
 		this.img_port._dim = this.returnSizes(814, 1020); // asters
 		this.img_land._dim = this.returnSizes(1383,  843); // construction_and_calamity_1
 		this.isCompliantWithCss3 = true;
-		this.documentResized(e);
+		this.documentResized(event);
 	}
 	$(window).resize(this.documentResized.bind(this));
 	this.preloadImages(true);
