@@ -1,3 +1,5 @@
+/* Adding some comments */
+
 
 var Core = {
 	title: 'Sylvia Luchez',
