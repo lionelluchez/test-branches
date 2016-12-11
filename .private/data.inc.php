@@ -26,7 +26,7 @@
 		define('SMTP_AUTH',      true);
 	}
 	define('SMTP_USER',      'username@gmail.com');
-	define('SMTP_PASS',      'password'); // Generated using https://support.google.com/accounts/answer/185833?hl=en (2-step verification needs to be activated)
+	define('SMTP_PASS',      'this_is_a_fake_pwd'); // Generated using https://support.google.com/accounts/answer/185833?hl=en (2-step verification needs to be activated)
 	define('SMTP_TRANSPORT', 'ssl');
 	
 	
