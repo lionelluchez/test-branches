@@ -108,10 +108,10 @@ var Core = {
 		$('#work-menu').toggleClass('opened');
 	},
 	showFolder: function(element, name) {
-		var selectedClassName = this.clsFolderItemSelected;
-		if( $(element).hasClass(selectedClassName) ) { return; }
-		$('#works-box #work-menu li').removeClass(selectedClassName);
-		$(element).addClass(selectedClassName);
+		var cls = this.clsFolderItemSelected;
+		if( $(element).hasClass(cls) ) { return; }
+		$('#works-box #work-menu li').removeClass(cls);
+		$(element).addClass(cls);
 		var gallery = document.getElementById('gallery');
 		$(gallery).empty();
 		$.each(document.pictures[name], function(index, value) {
@@ -277,7 +277,7 @@ var Core = {
 	}
 };
 
-
+/* Adding a comment here */
 $(document).ready( function(e) {
 	if( (this.img_land = $('#landscape_bkgd')[0]) && (this.img_port = $('#portrait_bkgd')[0]) ) {
 		this.img_port._dim = this.returnSizes(814, 1020); // asters
