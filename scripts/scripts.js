@@ -27,6 +27,10 @@ var Core = {
 	getCarouselImage: function() {
 		return this.getCarouselFolder()[this.carouselImageIndex];
 	},
+	/*
+		faking to add code here.
+		This is to test multiple commit on the same file from different branches.
+	*/
 	isSmallView: function() {
 		return $('body').hasClass('mobile') || ($(window).width() <= this.smallScreenViewportWidth) ;
 	},
