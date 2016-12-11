@@ -74,15 +74,15 @@ var Core = {
 		$('#site-title, #site-menu').toggleClass(this.clsMobileMenuOpened);
 	},
 	switchTo: function(event, elt, id, url) {
-		var attr, cb, section = $('#'+id+'-box'), clsSel = this.clsMenuItemSelected;
+		var cb_attr, cb, section = $('#'+id+'-box'), selectedClassName = this.clsMenuItemSelected;
 		this.updateHistory(url, elt.title);
 		$('#content-wrapper #content .page-content').hide();
-		if( (attr = section.attr('data-action')) && (cb = Core[attr]) )
+		if( (cb_attr = section.cb_attr('data-action')) && (cb = Core[cb_attr]) )
 			cb.call(this, elt, section);
 		section.show();
 		$('#content-wrapper').show();
-		$('#site-menu li.'+clsSel).removeClass(clsSel);
-		$(elt).addClass(clsSel);
+		$('#site-menu li.'+selectedClassName).removeClass(selectedClassName);
+		$(elt).addClass(selectedClassName);
 		if( $('#site-menu').hasClass(this.clsMobileMenuOpened) )
 			this.menuButtonClicked(event);
 		$('#content-wrapper #content, #content-wrapper #content .page-content').scrollTop(0);
@@ -100,15 +100,18 @@ var Core = {
 			form.removeClass(cls);
 		}
 	},
+	/**
+		Adding another fake function here to see how GIT will handle this.
+	*/
 	folderSelectorClicked: function(event) {
 		if( event && event.stopPropagation) event.stopPropagation();
 		$('#work-menu').toggleClass('opened');
 	},
 	showFolder: function(element, name) {
-		var cls = this.clsFolderItemSelected;
-		if( $(element).hasClass(cls) ) { return; }
-		$('#works-box #work-menu li').removeClass(cls);
-		$(element).addClass(cls);
+		var selectedClassName = this.clsFolderItemSelected;
+		if( $(element).hasClass(selectedClassName) ) { return; }
+		$('#works-box #work-menu li').removeClass(selectedClassName);
+		$(element).addClass(selectedClassName);
 		var gallery = document.getElementById('gallery');
 		$(gallery).empty();
 		$.each(document.pictures[name], function(index, value) {
